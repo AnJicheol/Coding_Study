@@ -28,3 +28,244 @@
   
     돈은 항상 토탈 금액을 넘길 수 없음 이때 토탈 금액은(A팀 배팅금액 +B팀 배팅 금액)
 
+
+
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class game {
+    public static void main(String[] args) {
+        main m = new main();
+        m.Start();
+    }
+
+}
+
+class main {
+
+    Random r = new Random();
+    Scanner s = new Scanner(System.in);
+    
+    int bet_for_player = 0;
+    int bet_for_com = 0;
+    int computer_answer;
+    int result;
+
+    final int max_people = 101000;
+    final int bet_maximum = 100000;
+    final int money_minimum = 100;
+    final int money_maximum = 10000;
+
+////////////////////////////////////////
+    int[] money = new int[max_people];
+    String[] to_who = new String[max_people];
+///////////////////////////////////////
+
+    String input;
+    
+    
+    void Start() {
+        System.out.println("게임을 시작합니다. ");
+
+
+
+        while (true) {
+
+            System.out.println("----배팅을 시작합니다.----");
+            betting();
+            System.out.println("----가위바위보를 시작합니다.----");
+            main_game();
+            prices();
+            System.out.println("계속하려면 아무 키나 입력하세요.");
+            s.nextLine();
+
+        }
+
+
+    }
+
+
+
+    void main_game() {
+
+        System.out.println("ㄴ = 가위 ㅁ = 바위 ㅂ = 보");
+        input = s.nextLine();
+
+        switch (input) {
+            case "ㄴ" -> input = "가위";
+            case "ㅁ" -> input = "바위";
+            case "ㅂ" -> input = "보";
+            default -> {
+                System.out.println("잘못된 입력입니다.");
+                result = 3;
+                return;
+            }
+        }
+
+        System.out.println(input + "를 냅니다.");
+        computer_answer = r.nextInt(3); // 0 1 2
+
+
+
+       if (computer_answer == 0) {
+
+           switch (input) {
+               case "가위" -> System.out.println("상대가 보자기를 냈습니다.");
+               case "바위" -> System.out.println("상대가 가위를 냈습니다.");
+               case "보" -> System.out.println("상대가 바위를 냈습니다.");
+
+           }
+
+           System.out.println("이겼습니다.");
+           result = 1;
+
+       }
+       else if (computer_answer == 1) {
+           switch (input) {
+               case "가위" -> System.out.println("상대가 가위를 냈습니다.");
+               case "바위" -> System.out.println("상대가 바위를 냈습니다.");
+               case "보" -> System.out.println("상대가 보자기를 냈습니다.");
+           }
+           System.out.println("비겼습니다.");
+           System.out.println("다시 가위바위보를 진행합니다.");
+           main_game();
+       }
+       else {
+           switch (input) {
+               case "가위" -> System.out.println("상대가 바위를 냈습니다.");
+               case "바위" -> System.out.println("상대가 보자기를 냈습니다.");
+               case "보" -> System.out.println("상대가 가위를 냈습니다.");
+           }
+           System.out.println("졌습니다.");
+           result = 0;
+       }
+
+    }
+
+
+
+    void betting() {
+        int where1;
+        int where2 = r.nextInt(10);
+        int A_team_total_money = 0;
+        int B_team_total_money = 0;
+
+        bet_for_player = 0;
+        bet_for_com = 0;
+
+        for (int i = 0; i < max_people; i++) {
+            where1 = r.nextInt(10);
+
+            if(where1 > where2) {
+                if (bet_for_player < bet_maximum) {
+                    bet_for_player++;
+                    to_who[i] = "A팀";
+                }
+                else {
+                    bet_for_com++;
+                    to_who[i] = "B팀";
+                }
+            }
+            else {
+                if (bet_for_com < bet_maximum) {
+                    bet_for_com++;
+                    to_who[i] = "B팀";
+                }
+                else {
+                    bet_for_player++;
+                    to_who[i] = "A팀";
+                }
+            }
+
+
+            money[i] = r.nextInt(money_maximum) + money_minimum;
+
+            if (i < 10) System.out.println( i+1 + "번 "+"팀:" + to_who[i] + " "+"배팅 금액: " + money[i] +"원");
+
+            if (to_who[i].equals("A팀")) A_team_total_money += money[i];
+            else B_team_total_money += money[i];
+
+        }
+
+        System.out.println("A팀 투표자: " + bet_for_player +"명 "+"B팀 투표자: " + bet_for_com+"명");
+        System.out.println("--------총 액--------\nA팀 : "+A_team_total_money+"원 B팀 : "+B_team_total_money+"원");
+    }
+
+
+    void prices() {
+        String winner = null;
+        double price = 0;
+        double tmp = 0;
+
+        if (result == 1) {
+            System.out.println("플레이어의 승리입니다.");
+            winner = "A팀";
+            tmp = (double) bet_for_com / (double) max_people;
+            tmp = Math.round(tmp*10)/10.0;
+        }
+        else if (result == 0) {
+            System.out.println("상대방의 승리입니다.");
+            winner = "B팀";
+            tmp = (double) bet_for_player  / (double) max_people;
+            tmp = Math.round(tmp*10)/10.0;
+        }
+        else System.out.println("잘못된 결과입니다. 이번 게임은 무효로 처리합니다.\n");
+
+        if (tmp < 0.1) tmp = 0.1;
+
+        System.out.println("배율은 "+tmp+" 입니다.\n----------------------------------------------------------");
+
+
+
+        for (int i = 0; i < 10; i++) {
+            price = tmp;
+            if(!to_who[i].equals(winner)) price = -money[i];
+            else price =  (money[i] * price);
+
+            System.out.println( i+1 + "번 "+"팀: " + to_who[i] + " "+"배팅 금액: " + money[i] +"원"+" 게임 후 얻은 금액: "+ (int) price +"원");
+        }
+        System.out.println("----------------------------------------------------------");
+    }
+
+
+}
+
+
+
+/*
+    배팅 게임
+
+    팀A 팀B가 있다 팀A는 플레이어(본인) 팀B 컴퓨터
+
+    알고리즘 설명:플레이어가 컴퓨터와 가위바위보 게임을 하고 사람들은
+        누가 이길지 배팅을 하려고 한다
+
+
+
+        규칙1.
+
+        간단한 가위바위보 게임 구현할 것
+        ㄴ =가위 ㅁ=바위 ㅂ=보
+
+        규칙2.
+
+        팀A에 배팅한 사람 팀B에 배팅한 사람 수는 최소 1000명이상 100000명(10만)이하 이다
+        각 사람 별로 배팅한 금액은 다르다 최소100원 최대 100000원(1만)이다
+
+
+        입력값 = 가위바위보
+
+        결과값 = 1)이긴 팀은 배팅한 금액은 다르더라도 동일한 배율로 돈을 얻는다 배율의 퍼센트를 출력하라.
+        2)A팀 총 배팅금액 B팀 총 배팅금액
+
+        단. 결과 값이 옳다는 것을 증명할 수 있어야한다
+        ex)3명에 사람이 배팅한 금액과 받은 금액이 (배팅한 금액 X 배율 퍼센트)만족함을 보이면됨
+
+        돈은 항상 토탈 금액을 넘길 수 없음 이때 토탈 금액은(A팀 배팅금액 +B팀 배팅 금액)
+*/
+
+
+
+
+
