@@ -1,0 +1,103 @@
+카카오 코딩테스트
+
+
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Start s = new Start();
+
+        s.main();
+
+    }
+
+}
+
+class Start {
+
+    Scanner s = new Scanner(System.in);
+    String input;
+
+    int size; //몇개씩 묶었는가가
+
+
+    void main() {
+
+        input = s.nextLine();
+
+        System.out.println(input);
+
+        re_press();
+
+    }
+
+
+    void re_press() {
+
+        String tmp1;
+        String tmp2;
+        String tmp3;
+        String minimum = input;
+        String tmpArr;
+
+        int num = 0;
+        int j = 0;
+        int minimum_int = 1;
+
+        for (int i = 1; i <= input.length() / 2; i++) {
+            j = 0;
+            tmpArr = "";
+            //System.out.println(i+"만큼 자르기");
+            while (j + i <= input.length()) {
+                //System.out.println("진입");
+                num = 1;
+                tmp1 = input.substring(j, j + i);
+
+                if (2 * i + j <= input.length()) tmp2 = input.substring(j + i, j + 2 * i);
+                else tmp2 = input.substring(j + i);
+
+                if (!tmp1.equals(tmp2)) j = j + i;
+                //System.out.println("tmp1 = "+ tmp1 + " tmp2 = "+tmp2 + " j = "+j);
+
+                while (tmp1.equals(tmp2)) { //tmp1과 같은 문자열이 얼마나 나오는지 카운트
+                    if (2 * i + j <= input.length()) tmp2 = input.substring(j + i, j + 2 * i);
+                    else tmp2 = null;
+                    if (tmp1.equals(tmp2)) num++;
+
+                    j = j + i;
+
+                    //System.out.println("tmp1 = "+ tmp1 + " tmp2 = "+tmp2 + " num = "+num+ " j = "+j);
+
+
+                }
+                if (num != 1) tmp3 = num + tmp1;
+                else tmp3 = tmp1;
+                tmpArr += tmp3;
+                //System.out.println("tmpArr = "+tmpArr);
+
+            }
+
+            tmp2 = input.substring(j);
+            tmpArr += tmp2;
+
+
+            //System.out.println(i+"일 때, 최종 문자열 : "+tmpArr + "길이 : "+tmpArr.length());
+
+            if (tmpArr.length() < minimum.length()) {
+                minimum = tmpArr;
+                minimum_int = i;
+            }
+
+        }
+
+        System.out.println("가장 작은 문자열은 : "+minimum + "이고, 길이는 "+minimum.length()+", "+ minimum_int +"개 단위로 잘라 압축했을 때 입니다.");
+
+    }
+
+}
