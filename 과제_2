@@ -3,3 +3,144 @@
 숫자는 번호순서대로 중복시 반복
 중복은 합쳐서 1개로 인정
 ex 입력 bacd141B  -> 11aBb4d 
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+
+public class main {
+    public static void main(String[] args){
+        Start start = new Start();
+        start.main();
+    }
+}
+
+class Start{
+
+    Scanner s = new Scanner(System.in);
+
+    LinkedList<Character> list = new LinkedList<>();
+
+    String input;
+
+
+    void main(){
+
+        input = s.nextLine();
+
+        for (int i = 0; i < input.length(); i++) list.add(input.charAt(i));
+
+        for(int i = 0; i < list.size(); i++) {
+
+            //System.out.println(i);
+            if(Character.isUpperCase(list.get(i))) {
+                char c = Character.toLowerCase(list.get(i));
+                list.set(i, c);
+
+            }
+            else if(Character.isLowerCase(list.get(i))) {
+                char c = Character.toUpperCase(list.get(i));
+                list.set(i, c);
+            }
+
+        }
+
+        System.out.println("시작");
+        re_react();
+
+        
+        input = "";
+
+        for (int i = 0; i < list.size(); i++) input += list.get(i);
+
+        System.out.println(input);
+
+        input = "";
+
+        for (int i = list.size() - 1; i >= 0; i--) {
+            input += list.get(i);
+        }
+
+        System.out.println(input);
+
+    }
+
+
+
+    void re_react(){
+        char tmp;
+        int tmp1;
+        int tmp2;
+        Scanner s = new Scanner(System.in);
+        String test;
+
+        for (int i = 0; i < list.size(); i++) {
+
+            if (list.get(i) >= '0' && list.get(i) <= '9') {
+                tmp = list.get(i);
+                tmp1 = (int) tmp - 49;  //숫자가 들어가야하는 위치
+                if (tmp != '0') tmp2 = i + 1;
+                else tmp2 = 0;
+
+                while (tmp2 < list.size()) {
+                    if (list.get(tmp2).equals(tmp)) list.remove(tmp2);
+                    tmp2++;
+                }
+                //test = s.nextLine();
+                if (tmp != '0' && i != tmp1) {
+                    //System.out.println("이프문 시작");
+                    tmp = list.get(tmp - 49);
+                    list.set(tmp1, list.get(i));
+                    list.set(i, tmp);
+                    i = -1;
+                    //System.out.println("i = " + i);
+                }
+            }
+
+
+            else {
+                for (int j = i + 1; j < list.size(); j++) {
+
+
+
+                    tmp1 = (int) Character.toLowerCase(list.get(i));
+                    tmp2 = (int) Character.toLowerCase(list.get(j));
+
+                    if (tmp1 == tmp2) {
+                        tmp1 = list.get(i);
+                        tmp2 = list.get(j);
+                    }
+
+                    if (tmp1 > tmp2 && tmp2 >= 57) {
+                        tmp = list.get(i);
+                        list.set(i, list.get(j));
+                        list.set(j, tmp);
+                    }
+
+                    //System.out.println(list);
+                }
+            }
+
+        }
+    }
+
+}
+
+
+//4Fy73y42No8
+
+
+/*    임의로 영어로 소문자, 대문자, 숫자 입력을 받음
+        소문자는 대문자로 대문자는 소문자로 abcd정렬 중복시 대문자 앞으로
+        숫자는 번호순서대로 중복시 반복
+        중복은 합쳐서 1개로 인정
+        ex 입력 bacd141B  -> 11aBb4d
+
+ */
