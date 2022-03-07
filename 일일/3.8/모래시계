@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+
+public class Main {
+
+  public static void main(String[] args) {
+    Start s = new Start();
+    s.draw_hourglass();
+  }
+}
+
+class Start {
+  
+  Scanner s = new Scanner(System.in);
+  
+  int input;
+  
+  void draw_hourglass() {
+  
+    input = s.nextInt();
+  
+    for (int i = 0; i < input * input; i++) {
+
+      if (i < input || i > input*(input-1)) System.out.print("@");
+      else if (i % (input+1) == 0 || i % (input-1) == 0) System.out.print("@");
+      else System.out.print(" ");
+
+      if (i % input == input-1) System.out.println();
+
+      }
+
+  }
+}
