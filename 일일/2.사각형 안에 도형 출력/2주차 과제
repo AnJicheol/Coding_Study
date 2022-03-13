@@ -1,7 +1,8 @@
 제목:사각형 안에 도형 출력 
 
 내용:정사각형 안에 다이아몬드와 모래시계 출력
-ex)![KakaoTalk_20220313_193418329](https://user-images.githubusercontent.com/90523400/158056921-ca219768-483c-45d0-a181-12c57fefa3f2.jpg)
+ex)
+![KakaoTalk_20220313_193418329](https://user-images.githubusercontent.com/90523400/158056921-ca219768-483c-45d0-a181-12c57fefa3f2.jpg)
 
 조건:1.큰 정사각형과 내부에 다이아몬드는 정사각형이다 
      2.입력은 큰 정사각형 길이만 입력 받는다.
