@@ -9,15 +9,13 @@ class Solution {
         Set<Integer> set = new HashSet<>();
         int[] answer = new int[2];
         int len, zero = 0, min;
-                
-                
+               
         for(int i = 0; i < 6; i++){
             set.add(lottos[i]);
         } 
         
         len = set.size();
         if(set.contains(0))zero = 7 - len;;
-        
         
         for(int i = 0; i < 6; i++){
             set.add(win_nums[i]);
