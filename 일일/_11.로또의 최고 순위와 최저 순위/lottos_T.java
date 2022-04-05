@@ -28,3 +28,4 @@ class Solution {
         return answer;
     }
 }
+//이렇게도 풀 수 있다는 것만 참고하셈  성능 은 2중  for문으로 서치하는게 모든 알고리즘 중 제일 빠를거임
