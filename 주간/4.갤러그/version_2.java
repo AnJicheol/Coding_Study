@@ -70,13 +70,15 @@ class End extends JFrame implements KeyListener {
 
     ArrayList<Integer> score_list = new ArrayList<>();
 
-    End() {
+    End(int score) {
         super("점수판");
         JPanel jPanel = new JPanel();
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        JLabel label = new JLabel("현 점수 : "+ );
-        jPanel.add(label);
+        JLabel Score_label = new JLabel("현 점수 : "+ score);
+        jPanel.add(Score_label);
+        JLabel continue_label = new JLabel("다시 시작하려면 space 누르세요");
+        jPanel.add(continue_label);
         add(jPanel);
         setVisible(true);
         addKeyListener(new KeyAdapter() {
@@ -377,7 +379,7 @@ class Play extends JFrame implements KeyListener, Runnable {
                 }
                 main_bgm_clip.stop();
 
-                End e = new End();
+                End e = new End(score);
                 setVisible(false);
                 //repaint();
                 //Thread.sleep(30);
