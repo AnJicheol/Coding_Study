@@ -17,9 +17,10 @@ class Solution {
                 result[l] = array[num];
                 l ++;
             }
-
+            int up = 0;
             for (int num1 = 0; num1 < result.length; num1 ++) {
-                for (int num2 = 0; num2 < result.length -1; num2 ++) {
+                up = num1;
+                for (int num2 = 0; num2 < result.length - up; num2 ++) {
                     if (result[num2] > result[num2 + 1]) {
                         int sw;
                         sw = result[num2];
