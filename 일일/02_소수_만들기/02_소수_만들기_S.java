@@ -9,7 +9,7 @@ class Solution {
                     int sum = nums[i] + nums[j] + nums[k];
                     for (int div = 2; div < sum; div++) {
                         if (sum % div == 0) break;
-                        else if (div == sum - 1 && sum % div != 0) answer++;
+                        else if (div == sum - 1) answer++;
                     }
                 }
             }
