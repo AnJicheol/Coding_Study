@@ -22,10 +22,7 @@ int solution(int nums[], size_t nums_len) {
                         break;
                     }
                 }
-                if(result == true){
-                    answer++;
-                }
-                sum=0;
+                if(result == true)answer++;
             }
         }
     }
