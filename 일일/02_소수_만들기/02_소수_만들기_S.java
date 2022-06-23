@@ -20,6 +20,36 @@ class Solution {
 }
 
 
+@@@@@@@@@@@@@@@@@@@피드백 후 수정된 코드@@@@@@@@@@@@@@@@@@@ 
+class Solution {
+    public int solution(int[] nums) {
+        int answer = 0;
+        int sum;
+        boolean notDecimal = false;
+        for (int i = 0; i < nums.length - 2; i++) {
+            for (int j = i + 1; j < nums.length - 1; j++) {
+                for (int k = j + 1; k < nums.length; k++) {
+                    sum = nums[i] + nums[j] + nums[k];
+                    for (int div = 2; div < sum; div++) {
+                        if (sum % div == 0) {
+                            notDecimal = true;
+                            break;
+                        }
+                    }
+                    if (!notDecimal) {
+                      answer++;
+                    } else {
+                        notDecimal = false;
+                    }
+                }
+            }
+        }
+        return answer;
+    }
+  
+}
+
+
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@ 피드백 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     안지철 
