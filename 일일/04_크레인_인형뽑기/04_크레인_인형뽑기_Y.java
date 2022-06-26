@@ -5,13 +5,13 @@ class Solution {
         int index = 0; //box의 index
         
         
-        for(int i = 0; i < moves.length;i++){
-            for(int j = 0; j < board.length; j++){
+        for(int row = 0; row < moves.length;row++){
+            for(int column = 0; column < board.length; column++){
                 
-                if(board[j][moves[i]-1] != 0){ //1,5,3,5,1,2,1,4; 1부터 시작하기 때문에 -1을해줌
+                if(board[column][moves[row]-1] != 0){ //1,5,3,5,1,2,1,4; 1부터 시작하기 때문에 -1을해줌
                     
-                    box[index] = board[j][moves[i]-1];
-                    board[j][moves[i]-1] = 0;
+                    box[index] = board[column][moves[row]-1];
+                    board[column][moves[row]-1] = 0;
                     
                     if(index != 0 && box[index-1] == box[index]){ // 2값이 연속으로 동일한 숫자일 경우
                         box[index-1] = 0;
