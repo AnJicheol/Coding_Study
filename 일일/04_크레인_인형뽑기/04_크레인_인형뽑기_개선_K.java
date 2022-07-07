@@ -12,9 +12,9 @@ class Solution {
                 if(board[j][num] != 0){ // 0이 아니면 인형을 뽑음
                     result[count] = board[j][num]; // 인형을  result 에 담고
                     board[j][num] = 0;  // 뽑은 인형을 비워 줌
-                    if(result[count] == result[count-1]){
-                        answer += 2;
-                        count -= 2;
+                    if(result[count] == result[count-1]){ // 뽑은 인형과 전에 뽑은 인형이 같은지 비교
+                        answer += 2; // 같으면 결과 값에 2를 더 해줌
+                        count -= 2; //  전에 뽑은 인형 자리로 이동 시켜서 다시 채워줌
                     } 
                     count++;
                     break;
@@ -22,6 +22,8 @@ class Solution {
             }
              System.out.print(result[i]);
         }
+
+        
         return answer;
     }
 }
