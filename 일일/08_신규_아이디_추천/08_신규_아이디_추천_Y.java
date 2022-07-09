@@ -52,3 +52,27 @@ class Solution {
 테스트 24 〉	통과 (1.57ms, 74.3MB)
 테스트 25 〉	통과 (1.31ms, 72.5MB)
 테스트 26 〉	통과 (1.27ms, 75.4MB)
+    
+    
+@@@@@@@@@@@@@@@@@@@@@@@@@@ 피드백 @@@@@@@@@@@@@@@@@@@@@@@@@@
+안지철--------------------------------------------------------------
+    
+8번 코드 charAt은 파라미터로 -1을 주면 마지막 인덱스에 접근할 수 있다
+
+answer = answer + answer.charAt(answer.length() - 1);
+
+5단계는 바로 return answer = "aaa"을 주면 더 효율적일 것이다.
+12번째 줄부터 18번째 줄은 switch문으로 대체하면 가독성이나 성능면에서
+더 좋을 것 같다
+
+switch(answer.length){
+    case 0 : return answer = "aaa";
+    case 1 : return answer = answer.repeat(3);
+    default : answer = answer + answer.charAt(-1);
+      
+}
+이때 answer,length 가 2일때는 default 에서 실행된다 
+따라서 3보다 클때 코드가 선행적으로 실행 되어야 한다
+
+
+--------------------------------------------------------------
