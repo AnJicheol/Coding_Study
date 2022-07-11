@@ -11,9 +11,8 @@ class Solution {
         for (String name : completion) map.put(name, map.get(name) - 1);
 
         for (String key : map.keySet()) {
-            if (map.get(key) != 0){
-                answer = key;
-            }
+            if (map.get(key) != 0) answer = key;
+
         }
         return answer;
     }
