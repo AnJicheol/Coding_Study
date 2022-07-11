@@ -10,7 +10,8 @@ class Solution {
             while(answer[i].length() < n){
                 StringBuilder sb = new StringBuilder(" ");
                 sb.append(answer[i]);
-                answer[i] = sb.toString();}
+                answer[i] = sb.toString();
+            }
         }     
         return answer;
     }
