@@ -2,13 +2,9 @@ class Solution {
     public int[] solution(int[] array, int[][] commands) {
         int [] answer = new int [commands.length];
         for (int t = 0; t < commands.length; t ++) {
-            int i = commands[t][0];
-            int j = commands[t][1];
-            int k = commands[t][2];
-
-            i -= 1;
-            j -= 1;
-            k -= 1;
+            int i = commands[t][0]-1;
+            int j = commands[t][1]-1;
+            int k = commands[t][2]-1;
 
             int[] result = new int[1 + (j - i)];
 
