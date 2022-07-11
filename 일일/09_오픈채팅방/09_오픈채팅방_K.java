@@ -91,7 +91,6 @@ class Solution {
 24 }
 
 19번줄 코드는 불필요하다 이미 23번줄 map에도 같은 값이 저장되기때문이다.
-23번줄 if문은 무의미한 조건문이다 division은 항상 길이가 3이다
 
 27 for (int i = 0; i < name.length; i ++) {
 28     name[i] = (String)map.get(id[i]); // name[i] 에 값 닉네임 저장,  map.get(id[i]) 키(id)를 넣어줘서 값(name)을 출력해줌
