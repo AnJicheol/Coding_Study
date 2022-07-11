@@ -7,7 +7,10 @@ class Solution {
             answer[i] = answer[i].replace('1', '#');
             answer[i] = answer[i].replace('0', ' ');
                   
-            while(answer[i].length() < n)answer[i] = ' ' + answer[i];
+            while(answer[i].length() < n){
+                StringBuilder sb = new StringBuilder(" ");
+                sb.append(answer[i]);
+                answer[i] = sb.toString();}
         }     
         return answer;
     }
