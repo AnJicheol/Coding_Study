@@ -9,14 +9,14 @@ class Solution {
         Arrays.sort(stages);
       
         // @@@@@  총 탈락한 인원, 스테이지마다 탈락한 인원 파악 @@@@@
-        for(int i = 0; i<N; i++){ // 스테이지 만큼 반복
+        for(int i = 0; i<N; i++){ 
             answer[i] = i+1;
-            for(int j = reduce; j<stages.length; j++){ // 도전자들만큼 반복
+            for(int j = reduce; j<stages.length; j++){ 
 
-                if(i == stages[j])  reduce++; // reduce = 지금까지 탈락한 인원 들
+                if(i == stages[j])  reduce++; 
                 
-                if(i+1 == stages[j]) man_failure ++; // man_failure =  현재 스테이지에서 탈락한 인원들
-                else continue; // 더 이상 실패한 사람이 없음 
+                if(i+1 == stages[j]) man_failure ++;
+                else continue; 
             }
           
         //  @@@@@ 실패율 계산 @@@@@
