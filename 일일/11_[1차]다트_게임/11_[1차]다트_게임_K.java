@@ -1,7 +1,7 @@
 class Solution {
     public int solution(String dartResult) {
         int answer = 0;
-        int [] value = new int [5]; // 값만 담을 변수
+        int [] value = new int [3]; // 값만 담을 변수
         char arr[] = dartResult.toCharArray();
         int num = 0; // 숫자를 담음
         int count = 0; // value 배열 인덱스 증가
