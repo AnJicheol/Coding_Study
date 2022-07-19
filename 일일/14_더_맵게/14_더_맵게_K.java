@@ -13,8 +13,7 @@ class Solution {
             answer = scovilleHeap.poll()+(scovilleHeap.poll()*2); // poll = 첫 번째 출력 후 삭제
             scovilleHeap.offer(answer); 
             
-            if(scovilleHeap.peek()>K) return i; // peek = 첫 번째 출력
-            
+            if(scovilleHeap.peek()>K) return i; // peek = 첫 번째 출력   
         }            
         
         return -1; // 모든 경우가 K보다 작을 때
