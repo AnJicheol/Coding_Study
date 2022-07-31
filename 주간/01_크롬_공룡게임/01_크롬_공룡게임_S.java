@@ -25,6 +25,7 @@ class Game extends JFrame {
     int dino_y = ground_height - dino_height;
     int timer = 0;
     int speed = 5;
+    int high_score;
 
     boolean stop = true;
     boolean death = false;
@@ -87,18 +88,18 @@ class Game extends JFrame {
                 //System.out.println("프레스 "+e);
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_SPACE : {
-                        if (!stop) {
+                        if (!stop && !jump) {
                             //System.out.println("점프");
                             jump();
                         }
-                        else {
+                        else if (stop){
                             //System.out.println("시작");
-                            stop = false;
-                            death = false;
+                            init();
                             setTimer();
                             painting();
                             move();
                             make_obstacles();
+                            retry_btn.setVisible(false);
                         }
                         break;
                     }
@@ -131,7 +132,7 @@ class Game extends JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
-                if (!death) jump();
+                if (!stop && !jump) jump();
             }
         });
 
@@ -144,6 +145,10 @@ class Game extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 init();
+                setTimer();
+                painting();
+                move();
+                make_obstacles();
                 retry_btn.setVisible(false);
             }
         });
@@ -155,7 +160,15 @@ class Game extends JFrame {
     }
 
     void init() {
-
+        death = false;
+        stop = false;
+        jump = false;
+        down = false;
+        obstacle_list.clear();
+        dino_height = 50;
+        dino_y = ground_height - dino_height;
+        if (high_score < timer) high_score = timer;
+        timer = 0;
     }
 
     void setTimer() {
