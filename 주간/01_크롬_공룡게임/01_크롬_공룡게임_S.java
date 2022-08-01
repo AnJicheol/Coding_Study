@@ -26,6 +26,7 @@ class Game extends JFrame {
     int timer = 0;
     int speed = 5;
     int high_score;
+    int[] score_arr = new int[5];
 
     boolean stop = true;
     boolean death = false;
@@ -37,6 +38,18 @@ class Game extends JFrame {
 
     Image game_over_img = new ImageIcon("res/game_over.png").getImage();
     ImageIcon retry_btn_img = new ImageIcon("res/button.png");
+
+    Image Hi = new ImageIcon("res/HI.png").getImage().getScaledInstance(50, 30, Image.SCALE_DEFAULT);
+    Image zero = new ImageIcon("res/0.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image one = new ImageIcon("res/1.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image two = new ImageIcon("res/2.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image three = new ImageIcon("res/3.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image four = new ImageIcon("res/4.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image five = new ImageIcon("res/5.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image six = new ImageIcon("res/6.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image seven = new ImageIcon("res/7.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image eight = new ImageIcon("res/8.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+    Image nine = new ImageIcon("res/9.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
 
     Image dino_death = new ImageIcon("res/dino_death.png").getImage().getScaledInstance(dino_width, dino_height, Image.SCALE_DEFAULT);
     Image dino_walk_1 = new ImageIcon("res/dino_walk_1.PNG").getImage().getScaledInstance(dino_width, dino_height, Image.SCALE_DEFAULT);
@@ -66,10 +79,51 @@ class Game extends JFrame {
                 graphics.drawImage(obstacle_list.get(i).get_Img(), obstacle_list.get(i).x, obstacle_list.get(i).y, this);
             }
             if (death) graphics.drawImage(game_over_img, screen_width/2 - game_over_img.getWidth(null)/2, 10, this);
+            graphics.drawImage(Hi, screen_width - 450, 10, this);
+            //graphics.drawImage(zero, screen_width - 330, 10, this);
+
+            score_arr = get_num_arr(high_score);
+
+            for (int i = 0; i < 5; i++) {
+                graphics.drawImage(get_num_img(score_arr[i]), screen_width - 380 + i * (30), 10 , this);
+            }
+
+            score_arr = get_num_arr(timer);
+
+            for (int i = 0; i < 5; i++) {
+                graphics.drawImage(get_num_img(score_arr[i]), screen_width - 200 + i * 30, 10, this);
+            }
         }
     };
     JPanel retry_panel = new JPanel();
     JButton retry_btn = new JButton(retry_btn_img);
+
+    int[] get_num_arr(int score) {
+        int[] nums = new int[5];
+        int digit = 10000;
+        for (int i = 0; i < 5; i++) {
+            nums[i] = score / digit;
+            score %= digit;
+            digit /= 10;
+        }
+        //System.out.println(Arrays.toString(nums));
+        return nums;
+    }
+
+    Image get_num_img(int num) {
+        switch (num) {
+            case 0: return zero;
+            case 1: return one;
+            case 2: return two;
+            case 3: return three;
+            case 4:  return four;
+            case 5: return five;
+            case 6: return six;
+            case 7: return seven;
+            case 8: return eight;
+            default: return nine;
+        }
+    }
 
     Game () {
         setTitle("Dino");
