@@ -3,7 +3,7 @@ class Solution {
         int[] work_days_remaining = new int [progresses.length]; // 기계마다 남은 작업일 수 저장
         int[] min_day_array = new int [progresses.length]; // 현재 기계보다 낮은 기계 갯수 저장
         int min_day = 1; // 현재 기계보다 낮은 기계 갯수 파악
-        int index = 0; // min_day_array 
+        int index = 0; // min_day_array 인덱스
         
         // 남은 작업일 수 저장
         for(int i = 0; i<progresses.length; i++){
