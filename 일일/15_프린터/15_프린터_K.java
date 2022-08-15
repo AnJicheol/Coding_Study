@@ -1,7 +1,7 @@
 class Solution {
     public int solution(int[] priorities, int location) {
-        int count = 0; // location보다 앞에 있는 순서들 증가
-        int min = 0;
+        int count = 0; // 프린터 될때 증가
+        int min = 0; // 내림차순 정렬 최솟값 
         int[] priorities_print = new int [priorities.length]; // priorities 복사
         
         // priorities 복사
