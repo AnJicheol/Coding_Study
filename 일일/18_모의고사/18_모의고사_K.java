@@ -1,4 +1,3 @@
-import java.util.Arrays;
 class Solution {
     public int[] solution(int[] answers) {
         int[] su1 = {1,2,3,4,5};
