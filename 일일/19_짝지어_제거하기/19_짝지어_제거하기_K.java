@@ -6,7 +6,6 @@ class Solution
         int answer = 0;
         Stack<Character> stack = new Stack<>();
         stack.push('A');
-        
         // 같은 문자 제거
         for(int i = 0; i<s.length(); i++){
             if(stack.peek() != s.charAt(i)){
@@ -20,7 +19,6 @@ class Solution
         if(stack.size() == 1){
             answer = 1;
         }
-        
         return answer;
     }
 }
