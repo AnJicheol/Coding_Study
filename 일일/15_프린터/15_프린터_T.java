@@ -1,0 +1,30 @@
+################################## 우선순위 큐버전 ############################################
+
+import java.util.PriorityQueue;
+import java.util.Collections;
+
+class Solution {
+    public int solution(int[] priorities, int location) {
+        PriorityQueue<Integer> PRI = new PriorityQueue<>(Collections.reverseOrder());
+        int answer = 0;
+
+        for(int num : priorities) PRI.offer(num);
+
+        while(!PRI.isEmpty()){
+            for(int i = 0;i<priorities.length;i++){
+                if(PRI.peek() == priorities[i] ){
+                    PRI.poll();
+                    answer++;
+                    if(location == i ) return answer;
+                }
+            }
+        }
+        return answer;
+    }
+}
+
+#############################################################################################
+안지철[
+해당 문제는 솔트를 사용해서 풀어보라고 규칙을 걸었는데 그 이유는 
+알고리즘에 최적화를 통해 우선순위 큐를 사용하지 않아도 같은 알고리즘이
+나온다는 것을 보여주기 위함이였음 위 코드는 솔트가 아닌 우선순위 큐 코드임]
