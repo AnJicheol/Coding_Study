@@ -2,7 +2,7 @@ class Solution {
     public String solution(int[] numbers, String hand) {
         String answer = "";
         
-        // 인덱스 0:왼쪽 1:가운데 2:오른쪽
+        // 좌표 0:왼쪽 1:가운데 2:오른쪽
         int[] x = {1,2,3}; 
         int[] y = {4,0,4}; 
         int r; // 오른손과 numbers의 거리 
