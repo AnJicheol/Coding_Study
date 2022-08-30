@@ -18,7 +18,7 @@ class Solution {
             else if(stack.peek() == '(' && s.charAt(i) == ')'){ 
                 stack.remove();
             }
-            else return false; // 제일 머리위가 ')' 면 종료  
+            else return false; // 제일 위가 ')' 면 종료  
         }
         // 스택 사이즈가 1보다 크면 제거 
         answer = (stack.size() == 1) ? true : false; 
