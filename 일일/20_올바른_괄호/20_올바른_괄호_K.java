@@ -7,8 +7,7 @@ class Solution {
         
         Deque<Character> stack = new ArrayDeque<>();
         stack.push('A');
-        // 처음이 ) 이거나 마지막이 ( 이면 종료
-        if(s.charAt(0) == ')' || s.charAt(s.length()-1) == '(') return false;
+
         // () 만들어지면 제거 
         for(int i = 0; i<s.length(); i++){
             if(s.charAt(i) == '('){   
