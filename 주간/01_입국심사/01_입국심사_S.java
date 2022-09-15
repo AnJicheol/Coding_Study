@@ -5,23 +5,25 @@ class Solution {
         long answer = 0;
         long start = 0;
         Arrays.sort(times);
-        long end = times[times.length-1] * n;
-        long mid = 0;
-        while (start < end) {
+        long end = (long) times[times.length-1] * n;
+        
+        //System.out.println(end);
+        
+        while (start <= end) {
             //System.out.println("start = "+start+ " end = "+end);
-            mid = (end + start) / 2;
-            int count = 0;
+            long mid = (end + start)/2;
+            long count = 0;
             for (int i = 0; i < times.length; i++) {
-                count += mid / times[i];
-                if (count >= n) break;
+                count +=  mid / (long)times[i];
             }
             
-            if (count > n) end = mid;
-            else if (count < n) start = mid;
-            else if (count == n) break;
-            
+            if (count >= n) {
+                end = mid - 1;
+                answer = mid;
+            }
+            else start = mid + 1;
         }
         
-        return mid;
+        return answer;
     }
 }
