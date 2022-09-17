@@ -2,9 +2,7 @@ import java.util.Arrays;
 
 class Solution {
     public long solution(int n, int[] times) {
-       
-        Arrays.sort(times);
-        
+            
         long answer = 0;
         long Start = 0;
         long End = (long) n * times[times.length - 1]; 
