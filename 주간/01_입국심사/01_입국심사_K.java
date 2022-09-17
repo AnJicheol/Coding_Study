@@ -7,14 +7,14 @@ class Solution {
         long target = 0; // 중간 값(시간)
         
         while(first<=last){  
-            target = (first + last)/2; // 중간 값 구하는 공식 
+            target = (first + last)/2; 
             personnel = 0;
-            // 시간에 얼마나 인원이 들어갈 수 있는지 확인
-            for(int i = 0; i<times.length; i++){
+           
+            for(int i = 0; i<times.length; i++){  
                 personnel += target/times[i]; 
             }    
-            // n과 들어갈 수 있는 인원이 다를 때
-            if(personnel < n)  first = target +1; 
+         
+            if(personnel < n)  first = target +1;    
             if(personnel >= n){
                 answer = target;
                 last = target - 1;
