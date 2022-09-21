@@ -9,12 +9,9 @@ class Solution {
             s = s.replaceAll("0", "");
             answer[1] += total - s.length();
             s = Integer.toBinaryString(s.length());
-
-            
             count++;
         }     
         answer[0] = count;
-
         return answer;
     }
 }
