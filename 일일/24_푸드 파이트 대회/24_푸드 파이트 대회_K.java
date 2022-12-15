@@ -13,7 +13,6 @@ class Solution {
         answer += 0; // 물 준비
 
         for(int i = food.length-1; i > 0; i--){ // 오른쪽 물 준비
-            System.out.println(i);
             for(int j = 0; j<food[i]; j++){
                 answer += i;
             }
