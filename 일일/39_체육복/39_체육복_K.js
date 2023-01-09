@@ -1,13 +1,13 @@
 function solution(n, lost, reserve) {
     var answer = 0;
-    lost.sort(function(a,b){
+    lost.sort(function(a,b){ // 정렬
         return a-b
     })
-    reserve.sort(function(a,b){
+    reserve.sort(function(a,b){ // 정렬
         return a-b
     })
     
-    for(var i=0; i<lost.length; i++){
+    for(var i=0; i<lost.length; i++){ // lost reserve 중복 확인
         for(var j=0; j<reserve.length; j++){
             if(lost[i] == reserve[j]){
                 lost[i] = 32
@@ -19,7 +19,7 @@ function solution(n, lost, reserve) {
         
     n -= lost.length
     
-    for(var i=0; i<lost.length; i++){
+    for(var i=0; i<lost.length; i++){ // 오차 1 확인
         for(var j=0; j<reserve.length; j++){
             if(Math.abs(lost[i] - reserve[j]) == 1){
                 answer++
