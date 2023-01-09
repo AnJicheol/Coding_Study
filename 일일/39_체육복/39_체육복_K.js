@@ -1,5 +1,6 @@
 function solution(n, lost, reserve) {
     var answer = 0;
+    var Exceeded = 32 // 최대 번호는 30
     lost.sort(function(a,b){ // 정렬
         return a-b
     })
@@ -10,8 +11,8 @@ function solution(n, lost, reserve) {
     for(var i=0; i<lost.length; i++){ // lost reserve 중복 확인
         for(var j=0; j<reserve.length; j++){
             if(lost[i] == reserve[j]){
-                lost[i] = 32
-                reserve[j] = 32
+                lost[i] = Exceeded
+                reserve[j] = Exceeded
                 answer++
             }
         }
@@ -23,7 +24,7 @@ function solution(n, lost, reserve) {
         for(var j=0; j<reserve.length; j++){
             if(Math.abs(lost[i] - reserve[j]) == 1){
                 answer++
-                reserve[j] = 32
+                reserve[j] = Exceeded
                 break;
             }
         }
